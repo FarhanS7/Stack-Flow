@@ -1,6 +1,7 @@
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import Theme from "./Theme";
 
 const Navbar = () => {
   return (
@@ -27,6 +28,9 @@ const Navbar = () => {
 
       <div className="flex items-center gap-4">
         {/* Theme Component Placeholder */}
+
+        <Theme />
+
         <SignedIn>
           <UserButton
             afterSignOutUrl="/"

@@ -5,29 +5,28 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 interface ThemeContextType {
   mode: string;
   setMode: (mode: string) => void;
+  toggleMode: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [mode, setMode] = useState("");
-
-  const handleThemeChange = () => {
-    if (mode === "dark") {
-      setMode("light");
-      document.documentElement.classList.remove("dark");
-    } else {
-      setMode("dark");
-      document.documentElement.classList.add("dark");
-    }
-  };
-
+  const [mode, setMode] = useState("dark");
+  // Apply the theme class whenever mode changes
   useEffect(() => {
-    handleThemeChange();
+    if (mode === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   }, [mode]);
 
+  const toggleMode = () => {
+    setMode((prevMode) => (prevMode === "dark" ? "light" : "dark"));
+  };
+
   return (
-    <ThemeContext.Provider value={{ mode, setMode }}>
+    <ThemeContext.Provider value={{ mode, setMode, toggleMode }}>
       {children}
     </ThemeContext.Provider>
   );
