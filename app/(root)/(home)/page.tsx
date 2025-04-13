@@ -1,9 +1,7 @@
-import { UserButton } from "@clerk/nextjs";
-
-export default function Home() {
+const Home = () => {
   return (
-    <div>
-      <UserButton afterSignOutUrl="/" />
-    </div>
+    <div className="text-3xl font-bold  text-purple-700">Hello Next App</div>
   );
-}
+};
+
+export default Home;
