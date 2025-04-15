@@ -1,7 +1,8 @@
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import MobileNav from "../MobileNav";
+import GlobalSearch from "../Search/GlobalSearch";
+import MobileNav from "./MobileNav";
 import Theme from "./Theme";
 
 const Navbar = () => {
@@ -23,6 +24,9 @@ const Navbar = () => {
       </Link>
 
       {/* GlobalSearch Component Placeholder */}
+
+      <GlobalSearch />
+
       <div className="flex-1 mx-4">
         {/* Insert your GlobalSearch component here */}
       </div>

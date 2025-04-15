@@ -1,3 +1,4 @@
+"use client";
 import {
   Sheet,
   SheetClose,
@@ -8,22 +9,40 @@ import { sidebarLinks } from "@/constant";
 import { SignedOut } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "../ui/button";
+import { usePathname } from "next/navigation";
+import { Button } from "../../ui/button";
 
 const NavContent = () => {
+  const pathname = usePathname(); // Get the current pathname
   return (
-    <section className="flex h-full flex-col gap-4 px-4 py-6 text-gray-900 dark:text-gray-100 font-spaceGrotesk">
-      {sidebarLinks.map((item) => (
-        <SheetClose asChild key={item.route}>
-          <Link
-            href={item.route}
-            className="flex items-center gap-3 rounded-lg px-3 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-800"
-          >
-            <Image src={item.imgURL} alt={item.label} width={20} height={20} />
-            <span>{item.label}</span>
-          </Link>
-        </SheetClose>
-      ))}
+    <section className="flex h-full flex-col gap-4 px-4 py-6 text-black dark:text-gray-100 font-spaceGrotesk">
+      {sidebarLinks.map((item) => {
+        const isActive =
+          (pathname.includes(item.route) && item.route.length > 1) ||
+          pathname === item.route;
+
+        return (
+          <SheetClose asChild key={item.route}>
+            <Link
+              href={item.route}
+              className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 ${
+                isActive ? "bg-orange-500 dark:bg-orange-700" : ""
+              }`}
+            >
+              <Image
+                src={item.imgURL}
+                alt={item.label}
+                width={20}
+                height={20}
+                className={`${isActive ? "" : "invert dark:invert-0"}`}
+              />
+              <span className={`${isActive ? "font-bold" : "font-medium"}`}>
+                {item.label}
+              </span>
+            </Link>
+          </SheetClose>
+        );
+      })}
     </section>
   );
 };
@@ -42,7 +61,7 @@ const MobileNav = () => {
       </SheetTrigger>
       <SheetContent
         side="left"
-        className="bg-gray-100 dark:bg-gray-800 border-none"
+        className="bg-gray-100 dark:bg-black border-gray-200 dark:border-gray-700 border-l-0 sm:hidden"
       >
         <Link href={"/"} className="flex items-center gap-2 mt-5">
           <Image
