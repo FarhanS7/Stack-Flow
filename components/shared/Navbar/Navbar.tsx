@@ -25,7 +25,9 @@ const Navbar = () => {
 
       {/* GlobalSearch Component Placeholder */}
 
-      <GlobalSearch />
+      <div className="ml-100">
+        <GlobalSearch />
+      </div>
 
       <div className="flex-1 mx-4">
         {/* Insert your GlobalSearch component here */}

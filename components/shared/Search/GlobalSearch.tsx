@@ -16,7 +16,8 @@ const GlobalSearch = () => {
           type="search"
           placeholder="Search"
           value=""
-          className="paragraph-regular text-gray-900 dark:text-gray-100 no-focus placeholder shadow-none bg-transparent border-0 focus-visible:ring-0 focus-visible:outline-none focus-visible:ring-transparent focus-visible:border-0 focus-visible:shadow-none placeholder:text-gray-500 dark:placeholder:text-gray-400 ml-2"
+          className="text-lg text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400
+             bg-transparent border-0   ml-2 px-4 py-2 min-w-[500px]"
         />
       </div>
     </div>
