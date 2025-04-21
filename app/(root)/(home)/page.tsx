@@ -12,7 +12,7 @@ const Home = () => {
         <h1 className="text-3xl font-bold text-dark100_light900">
           All Questions
         </h1>
-        <Link href="/ask-questions" className="flex justify-end max-sm:w-full">
+        <Link href="/ask-question" className="flex justify-end max-sm:w-full">
           <Button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:brightness-110 text-white min-h-[46px] px-4 py-3 transition">
             Ask A question
           </Button>

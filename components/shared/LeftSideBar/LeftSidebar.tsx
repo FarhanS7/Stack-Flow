@@ -22,6 +22,7 @@ const LeftSidebar = () => {
 
           return (
             <Link
+              key={item.route}
               href={item.route}
               className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 ${
                 isActive ? "bg-orange-500 dark:bg-orange-700" : ""
