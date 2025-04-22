@@ -12,10 +12,12 @@ const Home = () => {
         <h1 className="text-3xl font-bold text-dark100_light900">
           All Questions
         </h1>
-        <Link href="/ask-question" className="flex justify-end max-sm:w-full">
-          <Button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:brightness-110 text-white min-h-[46px] px-4 py-3 transition">
-            Ask A question
-          </Button>
+        <Link href="/ask-question" prefetch passHref legacyBehavior>
+          <a className="flex justify-end max-sm:w-full">
+            <Button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:brightness-110 text-white min-h-[46px] px-4 py-3 transition-none hover:bluer-500 shadow-none w-fit rounded-lg">
+              Ask A Question
+            </Button>
+          </a>
         </Link>
       </div>
       <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
