@@ -1,4 +1,6 @@
+import dotenv from "dotenv";
 import mongoose from "mongoose";
+dotenv.config(); // Load environment variables from .env file
 
 let isConnected: boolean = false; // track the connection status
 

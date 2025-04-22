@@ -123,7 +123,7 @@ export default function Question() {
         <FormField
           control={form.control}
           name="description"
-          render={() => (
+          render={({ field }) => (
             <FormItem className="flex flex-col gap-2 w-full">
               <FormLabel className="text-base font-semibold text-gray-700 dark:text-gray-200">
                 Detailed Explanation of your question
@@ -135,6 +135,7 @@ export default function Question() {
                     apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
                     onInit={(_evt, editor) => (editorRef.current = editor)}
                     initialValue=""
+                    onBlur={field.onBlur}
                     onEditorChange={(content) => {
                       setValue("description", content);
                       trigger("description");
