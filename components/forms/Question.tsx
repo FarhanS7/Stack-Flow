@@ -16,16 +16,24 @@ import { QuestionSchema } from "@/lib/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Editor } from "@tinymce/tinymce-react";
 import Image from "next/image";
+// import { Props } from "next/script";
+import { usePathname, useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const type: any = "create";
 
-export default function Question() {
+interface Props {
+  mongoUserId: string;
+}
+
+export default function Question({ mongoUserId }: Props) {
   const editorRef = useRef<any>(null);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const form = useForm<z.infer<typeof QuestionSchema>>({
     resolver: zodResolver(QuestionSchema),
@@ -42,8 +50,16 @@ export default function Question() {
     setIsSubmitting(true);
     try {
       //make api call to create question
-      await createQuestion({});
-      // contain all form of data
+
+      await createQuestion({
+        title: values.title,
+        content: values.description,
+        tags: values.tags,
+        author: JSON.parse(mongoUserId),
+      });
+      // navigate to home
+
+      router.push("/");
     } catch (error) {
     } finally {
       setIsSubmitting(false);
@@ -232,7 +248,7 @@ export default function Question() {
 
         <Button
           type="submit"
-          className="bg-gradient-to-r from-orange-500 to-yellow-400 w-fit text-white"
+          className="bg-gradient-to-r from-orange-500 to-yellow-400 w-fit text-white cursor-pointer"
           disabled={isSubmitting}
         >
           {isSubmitting ? (

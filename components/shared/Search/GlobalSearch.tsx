@@ -15,7 +15,7 @@ const GlobalSearch = () => {
         <Input
           type="search"
           placeholder="Search"
-          value=""
+          // value=""
           className="text-lg text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400
              bg-transparent border-0   ml-2 px-4 py-2 min-w-[500px]"
         />
